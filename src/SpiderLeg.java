@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class SpiderLeg
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
     private List<String> links = new LinkedList<String>();
     private Document htmlDocument;
+    
+    private int numOfLinks;
+    
+    
 
 
     /**
@@ -37,6 +42,7 @@ public class SpiderLeg
                                                           // indicating that everything is great.
             {
                 System.out.println("\n**Visiting** Received web page at " + url);
+                
             }
             if(!connection.response().contentType().contains("text/html"))
             {
@@ -44,6 +50,7 @@ public class SpiderLeg
                 return false;
             }
             Elements linksOnPage = htmlDocument.select("a[href]");
+            //numOfLinks= linksOnPage.size();
             System.out.println("Found (" + linksOnPage.size() + ") links");
             for(Element link : linksOnPage)
             {
@@ -85,5 +92,11 @@ public class SpiderLeg
     {
         return this.links;
     }
+    
+    public int getNumOfLinks(){
+    	return this.numOfLinks;
+    }
+    
+    
 
 }

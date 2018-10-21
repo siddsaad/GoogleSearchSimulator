@@ -20,18 +20,17 @@ public class Heap {
 		
 		if (largest != i)
 		{
-			int swap = heapArray[i].getId();
-			heapArray[i].setId(heapArray[largest].getId());
-		
-			heapArray[largest].setId(swap);
+			Links swap = heapArray[i];
+			heapArray[i] = heapArray[largest];
+			heapArray[largest] = swap;
 			
 			maxHeapify(heapArray, largest);
 		}
 	}
 	
-	public int heapMaximum (Links[] heapArray)
+	public Links heapMaximum (Links[] heapArray)
 	{
-		return heapArray[0].getId();
+		return heapArray[0];
 	}
 	
 	public int heapExtractMax (Links[] heapArray)
@@ -54,12 +53,12 @@ public class Heap {
 		
 		heapArray[i].setId(key);
 		
-		int exchange;
+		Links exchange;
 		while ( i > 0 && heapArray[parent(i)].getId() < heapArray[i].getId())
 		{
-			exchange = heapArray[i].getId();
-			heapArray[i].setId(heapArray[parent(i)].getId());
-			heapArray[parent(i)].setId(exchange);
+			exchange = heapArray[i];
+			heapArray[i] = heapArray[parent(i)];
+			heapArray[parent(i)] = (exchange);
 			
 			i = parent(i);
 		}
@@ -86,13 +85,13 @@ public class Heap {
 		buildMaxHeap(heapArray);
 		
 		
-		int exchange;
+		Links exchange;
 		
 		for(int i = heapArray.length-1; i >= 1; i--)
 		{
-			exchange = heapArray[i].getId();
-			heapArray[i].setId(heapArray[0].getId());
-			heapArray[0].setId(exchange);
+			exchange = heapArray[i];
+			heapArray[i] = heapArray[0];
+			heapArray[0] = exchange;
 			
 			size --;
 			maxHeapify(heapArray, 0);

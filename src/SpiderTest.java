@@ -51,9 +51,7 @@ public class SpiderTest
     	}
     System.out.println();	
    
-    //heapArray.heapExtractMax(linksan)
-    int max = heapArray.heapMaximum(linksAndId);
-    System.out.println( linksAndId[max].getName() +" " + linksAndId[max].getId());
+    heapArray.heapSort(linksAndId);
     
  
     System.out.println("Heap array");

@@ -18,12 +18,9 @@ public class SpiderLeg
     private List<String> links = new LinkedList<String>();
     private Document htmlDocument;
     
-    private int numOfLinks;
-    
-    
+  
 
-
-    /**
+	/**
      * This performs all the work. It makes an HTTP request, checks the response, and then gathers
      * up all the links on the page. Perform a searchForWord after the successful crawl
      * 
@@ -50,11 +47,14 @@ public class SpiderLeg
                 return false;
             }
             Elements linksOnPage = htmlDocument.select("a[href]");
-            //numOfLinks= linksOnPage.size();
+           
             System.out.println("Found (" + linksOnPage.size() + ") links");
+           
             for(Element link : linksOnPage)
             {
                 this.links.add(link.absUrl("href"));
+                
+               
             }
             return true;
         }
@@ -93,10 +93,8 @@ public class SpiderLeg
         return this.links;
     }
     
-    public int getNumOfLinks(){
-    	return this.numOfLinks;
-    }
-    
+
+  
     
 
 }

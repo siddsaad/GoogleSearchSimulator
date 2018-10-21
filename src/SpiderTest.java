@@ -15,36 +15,53 @@ public class SpiderTest
     public static void main(String[] args)
     {
     	Scanner userInput = new Scanner(System.in);
+    	
+    	Heap heapArray = new Heap();
     
     	String initUrl = "http://google.com/";
     	System.out.println("Enter word to search");
     	String wordToSearch = userInput.next();
     	
         Spider spider = new Spider();
-        SpiderLeg linkN = new SpiderLeg();
-        
-        ArrayList<String> links = new ArrayList<String>();
-        ArrayList<Integer> linksOnPage = new ArrayList<Integer>();
+        int maxSize = spider.getMaxPagesToSearch();
         
         spider.search(initUrl, wordToSearch);
         
-       
+        // array containing index and the link
         
         
+        // converting the set pages visited to an array
+        String arr[] = new String[maxSize];
+        System.arraycopy(spider.getPagesVisited().toArray(), 0, arr, 0, maxSize);
         
+        Links[] linksAndId = new Links[maxSize] ;
+        //int curretSize = 0;
         
-        for(int i = 0; i < spider.getMaxPagesToSearch();i++){
-        	links.add(spider.nextUrl());
-        	linksOnPage.add(linkN.getNumOfLinks());
-        	
-        }
-       
-        for(int i = 0 ; i < links.size();i++){
-        	String value = links.get(i);
-        	int value2 = linksOnPage.get(i);
-        	System.out.println(i + 1 + ": " + value + " Number of links: " + value2);
+        for(int i = 0; i < maxSize;i++){
+        	Links newNode = new Links(i, arr[i]);
+        	linksAndId[i] =(newNode);
         }
         
+        heapArray.buildMaxHeap(linksAndId);
+        
+        System.out.println("Heap array");
+    	for (int i =0; i < linksAndId.length;i++)
+    	{
+    		System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
+    	}
+    System.out.println();	
+   
+    //heapArray.heapExtractMax(linksan)
+    int max = heapArray.heapMaximum(linksAndId);
+    System.out.println( linksAndId[max].getName() +" " + linksAndId[max].getId());
+    
+ 
+    System.out.println("Heap array");
+	for (int i =0; i < linksAndId.length;i++)
+	{
+		System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
+	}
+System.out.println();	
         
  
         

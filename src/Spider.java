@@ -7,7 +7,16 @@ public class Spider
 {
   private static final int MAX_PAGES_TO_SEARCH = 5;
   private Set<String> pagesVisited = new HashSet<String>();
-  private List<String> pagesToVisit = new LinkedList<String>();
+  
+  public Set<String> getPagesVisited() {
+	return pagesVisited;
+}
+
+
+
+
+
+private List<String> pagesToVisit = new LinkedList<String>();
  
 
   
@@ -63,6 +72,11 @@ public int getMaxPagesToSearch() {
   
   
 
+
+
+public List<String> getPagesToVisit() {
+	return pagesToVisit;
+}
 
 
 /**

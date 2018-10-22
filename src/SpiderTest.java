@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Scanner;
 
 public class SpiderTest
@@ -74,14 +70,27 @@ public class SpiderTest
 	    
 	 
 	    System.out.println("Heap array");
-		for (int i =0; i < linksAndId.length;i++)
+	    System.out.println("Score" );
+		for (int i = linksAndId.length - 1; i >= 0 ;i--)
 		{
 			System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
 		}
 		System.out.println();
         
- 
+		
+		heapArray.heapExtractMax(linksAndId);
+		
+		
+		heapArray.buildMaxHeap(linksAndId);
+		heapArray.heapSort(linksAndId);
         
+		System.out.println("Heap array");
+	    System.out.println("Score" );
+		for (int i = linksAndId.length - 1; i >= 0 ;i--)
+		{
+			System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
+		}
+		System.out.println();
         
     }
 }

@@ -1,7 +1,6 @@
-
 public class Heap {
 	
-	private int size;
+	private int size ;
 	public void maxHeapify(Links[] heapArray, int i)
 	{
 		int l = left(i);
@@ -33,15 +32,15 @@ public class Heap {
 		return heapArray[0];
 	}
 	
-	public int heapExtractMax (Links[] heapArray)
+	public Links heapExtractMax (Links[] heapArray)
 	{
 		if (size < 1)
 		{
 			System.out.println("Heap underflow");
 		}
-		int max = heapArray[0].getId();
-		heapArray[0].setId(heapArray[size].getId());
-		size--;
+		Links max = heapArray[0];
+		heapArray[0] = heapArray[size];
+		size= size - 1;
 		maxHeapify(heapArray, 0);
 		return max;
 	}

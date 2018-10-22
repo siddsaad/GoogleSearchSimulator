@@ -1,6 +1,7 @@
 public class Heap {
 	
 	private int size ;
+	
 	public void maxHeapify(Links[] heapArray, int i)
 	{
 		int l = left(i);
@@ -38,10 +39,19 @@ public class Heap {
 		{
 			System.out.println("Heap underflow");
 		}
+		
 		Links max = heapArray[0];
+		
+		//System.out.println("heapArray[size]" + heapArray[size].getId() + " : " + heapArray[size].getName());
 		heapArray[0] = heapArray[size];
 		size= size - 1;
+		
+//		for(int i = 0; i < heapArray.length;i++){
+//			System.out.println("before max" + heapArray[i].getId() + " : " + heapArray[i].getName());
+//		}
+		
 		maxHeapify(heapArray, 0);
+		
 		return max;
 	}
 	
@@ -73,6 +83,7 @@ public class Heap {
 	void buildMaxHeap(Links[] heapArray)
 	{
 		size = heapArray.length;
+	
 		for(int i = (heapArray.length / 2); i >= 0; i--)
 		{
 			maxHeapify(heapArray, i);
@@ -95,6 +106,16 @@ public class Heap {
 			size --;
 			maxHeapify(heapArray, 0);
 		}
+	}
+	
+	
+	public void displayHeap(Links[] heapArray){
+		System.out.println("Heap array");
+		for (int i =0; i < heapArray.length ;i++)
+		{
+			System.out.println( heapArray[i].getId() + "  " + heapArray[i].getName());
+		}
+		System.out.println();	
 	}
 	
 	int parent(int i)

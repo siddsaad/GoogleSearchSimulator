@@ -34,63 +34,22 @@ public class SpiderTest
         //int curretSize = 0;
         
         for(int i = 0; i < maxSize;i++){
-        	Links newNode = new Links(i * 10, arr[i]);
+        	Links newNode = new Links(i, arr[i]);
         	linksAndId[i] =(newNode);
         }
         
         heapArray.buildMaxHeap(linksAndId);
+        heapArray.displayHeap(linksAndId);
         
-        System.out.println("Heap array");
-    	for (int i =0; i < linksAndId.length;i++)
-    	{
-    		System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
-    	}
-    System.out.println();	
-   
-    heapArray.heapSort(linksAndId);
-    
- 
-    System.out.println("Heap array");
-	for (int i =0; i < linksAndId.length;i++)
-	{
-		System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
-	}
-	System.out.println();	
-	
-	heapArray.heapIncreaseKey(linksAndId, 3, 5);
-	
-	System.out.println("Heap array");
-	for (int i =0; i < linksAndId.length;i++)
-	{
-		System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
-	}
-	System.out.println();	
-	
-	 heapArray.heapSort(linksAndId);
-	    
-	 
-	    System.out.println("Heap array");
-	    System.out.println("Score" );
-		for (int i = linksAndId.length - 1; i >= 0 ;i--)
-		{
-			System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
-		}
-		System.out.println();
+        heapArray.heapSort(linksAndId);
+	   
         
 		
-		heapArray.heapExtractMax(linksAndId);
+		//heapArray.heapExtractMax(linksAndId);
 		
-		
-		heapArray.buildMaxHeap(linksAndId);
 		heapArray.heapSort(linksAndId);
-        
-		System.out.println("Heap array");
-	    System.out.println("Score" );
-		for (int i = linksAndId.length - 1; i >= 0 ;i--)
-		{
-			System.out.println( linksAndId[i].getId() + "  " + linksAndId[i].getName());
-		}
-		System.out.println();
+		
+		       
         
     }
 }
